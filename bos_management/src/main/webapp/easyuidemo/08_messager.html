@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" href="../js/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" href="../js/easyui/themes/icon.css" />
+<!--添加ztree-->
+<script type="text/javascript" src="../js/ztree/jquery.ztree.all-3.5.js"></script>
+<link rel="stylesheet" href="../js/ztree/zTreeStyle.css" />
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		$(function(){
+			$("#btn").click(function(){
+				// 6.1．警告窗口
+				/**
+				 *  title：在头部面板显示的标题文本。
+					msg：显示的消息文本。
+					icon：显示的图标图像。可用值有：error,question,info,warning。
+				 */
+				// $.messager.alert('警告','这是一个提示信息！','warning');
+				// 6.2．确认窗口 
+//				$.messager.confirm('确认对话框', '您想要退出该系统吗？', function(r){
+//					if (r){
+//					    $.messager.alert('退出系统','正常退出系统！','info');
+//					}
+//				});
+				// 6.3．输入窗口
+//				$.messager.prompt('提示信息', '请输入你的姓名：', function(r){
+//					if (r){
+//						$.messager.alert('您的姓名','您的姓名是'+r,'info');
+//					}
+//				});
+				// 6.4．右下角气泡窗口 
+				/**
+				 *  showType：定义将如何显示该消息。可用值有：null,slide,fade,show。默认：slide。
+					showSpeed：定义窗口显示的过度时间。默认：600毫秒。
+				 */
+//				$.messager.show({
+//					title:'我的消息',
+//					msg:'消息将在5秒后关闭。',
+//					timeout:5000,
+//					showType:'fade'
+//				});
+				// 6.5．进度条窗口 
+				/**
+				  * title：在头部面板显示的标题文本。默认：空。
+					msg：显示的消息文本。默认：空。 
+					text：在进度条上显示的文本。默认：undefined。
+					interval：每次进度更新的间隔时间。默认：300毫秒。
+				 */
+				$.messager.progress({
+					title:"正在数据加载",
+					msg:"数据加载中...",
+					text:"请等等",
+					interval:1000
+				});
+				// 定时器，5秒后，关闭
+				window.setTimeout(function(){
+					$.messager.progress('close');
+				},5000);
+
+			})
+		})
+	</script>
+
+	<body>
+		<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">点击</a>  
+	</body>
+
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../bos_domain24" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../bos_fore24" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../bos_management24" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../common_parent24" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../crm_domain24" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../crm_management24" vcs="svn" />
+  </component>
+</project>

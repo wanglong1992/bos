@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../bos_domain/bos_domain.iml" filepath="$PROJECT_DIR$/../bos_domain/bos_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bos_domain24/bos_domain24.iml" filepath="$PROJECT_DIR$/../bos_domain24/bos_domain24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bos_fore.iml" filepath="$PROJECT_DIR$/bos_fore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bos_fore24/bos_fore24.iml" filepath="$PROJECT_DIR$/../bos_fore24/bos_fore24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bos_management/bos_management.iml" filepath="$PROJECT_DIR$/../bos_management/bos_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../bos_management24/bos_management24.iml" filepath="$PROJECT_DIR$/../bos_management24/bos_management24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../common_parent/common_parent.iml" filepath="$PROJECT_DIR$/../common_parent/common_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../common_parent24/common_parent24.iml" filepath="$PROJECT_DIR$/../common_parent24/common_parent24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../crm_domain/crm_domain.iml" filepath="$PROJECT_DIR$/../crm_domain/crm_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../crm_domain24/crm_domain24.iml" filepath="$PROJECT_DIR$/../crm_domain24/crm_domain24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../crm_management/crm_management.iml" filepath="$PROJECT_DIR$/../crm_management/crm_management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../crm_management24/crm_management24.iml" filepath="$PROJECT_DIR$/../crm_management24/crm_management24.iml" />
+    </modules>
+  </component>
+</project>

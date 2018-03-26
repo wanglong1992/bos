@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+    <!-- 配置shiro的注解 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"></bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"></property>
+    </bean>
+
+    <!-- 配置安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="bosRealm"></property>
+    </bean>
+    <!-- 对安全管理器 增强代码 ， spring 后处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+
+    <!-- 配置shiro的核心过滤器 -->
+    <!-- shiroFilter的名称，要与web.xml中的过滤器的名称要一致 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 安全管理器 -->
+        <property name="securityManager" ref="securityManager"></property>
+        <!-- 未认证，跳转到的页面 -->
+        <property name="loginUrl" value="./login.html"></property>
+        <!-- 认证后，跳转到的页面，登录成功的页面 -->
+        <property name="successUrl" value="/index.html"></property>
+        <!-- 认证后，没有权限跳转到的页面 -->
+        <property name="unauthorizedUrl" value="/unauthorized.html"></property>
+        <!-- shiro，URL控制过滤器规则 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /login.html = anon
+                /validatecode.jsp = anon
+                /user_login.action = anon
+                /css/** = anon
+                /js/** = anon
+                /images/** = anon
+                /services/** = anon
+                /pages/base/courier.html* = perms[courier:list]
+                /pages/base/area.html* = roles[base]
+                /** = authc
+            </value>
+        </property>
+
+    </bean>
+</beans>

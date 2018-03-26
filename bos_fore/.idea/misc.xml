@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/../bos_fore24" />
+    <file type="web" url="file://$PROJECT_DIR$/../bos_management" />
+    <file type="web" url="file://$PROJECT_DIR$/../bos_management24" />
+    <file type="web" url="file://$PROJECT_DIR$/../crm_management" />
+    <file type="web" url="file://$PROJECT_DIR$/../crm_management24" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../bos_management/pom.xml" />
+        <option value="$PROJECT_DIR$/../common_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/../crm_domain/pom.xml" />
+        <option value="$PROJECT_DIR$/../bos_domain/pom.xml" />
+        <option value="$PROJECT_DIR$/../crm_management/pom.xml" />
+        <option value="$PROJECT_DIR$/../crm_management24/pom.xml" />
+        <option value="$PROJECT_DIR$/../crm_domain24/pom.xml" />
+        <option value="$PROJECT_DIR$/../common_parent24/pom.xml" />
+        <option value="$PROJECT_DIR$/../bos_management24/pom.xml" />
+        <option value="$PROJECT_DIR$/../bos_fore24/pom.xml" />
+        <option value="$PROJECT_DIR$/../bos_domain24/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+</project>
