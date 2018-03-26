@@ -11,5 +11,6 @@ public interface MenuService {
     void save(Menu menu);
 
     List<Menu> findMenuListByUser(User user);
+
 }
 

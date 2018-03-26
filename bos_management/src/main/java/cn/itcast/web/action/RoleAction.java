@@ -21,6 +21,10 @@ public class RoleAction extends BaseAction<Role> {
     private static final long serialVersionUID = -5403941803893659722L;
     @Autowired
     private RoleService roleService;
+    private String[] permissionIds;
+    private String menuIds;
+
+
 
     @Action(value = "role_list", results = {@Result(type = "json")})
     public String roleList() {
@@ -29,4 +33,17 @@ public class RoleAction extends BaseAction<Role> {
         return SUCCESS;
     }
 
+    @Action(value = "role_save", results = {@Result(name = "success", type = "redirect", location = "./pages/system/role.html")})
+    public String save() {
+        roleService.save(model, permissionIds, menuIds);
+        return SUCCESS;
+    }
+
+    public void setPermissionIds(String[] permissionIds) {
+        this.permissionIds = permissionIds;
+    }
+
+    public void setMenuIds(String menuIds) {
+        this.menuIds = menuIds;
+    }
 }
