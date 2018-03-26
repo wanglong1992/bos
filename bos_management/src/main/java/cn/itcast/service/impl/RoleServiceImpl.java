@@ -4,7 +4,6 @@ import cn.itcast.dao.RoleRepository;
 import cn.itcast.domain.system.Role;
 import cn.itcast.domain.system.User;
 import cn.itcast.service.RoleService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +21,11 @@ public class RoleServiceImpl implements RoleService {
         } else {
             return roleRepository.findByRoleListByUserId(user.getId());
         }
+    }
+
+    @Override
+    public List<Role> findAll() {
+
+        return null;
     }
 }
