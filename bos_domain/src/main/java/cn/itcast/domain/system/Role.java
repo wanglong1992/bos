@@ -1,5 +1,7 @@
 package cn.itcast.domain.system;
 
+import org.apache.struts2.json.annotations.JSON;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -70,6 +72,7 @@ public class Role implements Serializable {
         this.description = description;
     }
 
+    @JSON(serialize = false)
     public Set<User> getUsers() {
         return users;
     }
@@ -78,6 +81,7 @@ public class Role implements Serializable {
         this.users = users;
     }
 
+    @JSON(serialize = false)
     public Set<Permission> getPermissions() {
         return permissions;
     }
@@ -86,6 +90,7 @@ public class Role implements Serializable {
         this.permissions = permissions;
     }
 
+    @JSON(serialize = false)
     public Set<Menu> getMenus() {
         return menus;
     }

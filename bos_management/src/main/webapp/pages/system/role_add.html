@@ -27,12 +27,12 @@
 						}
 					},
 					check : {
-						enable : true,
+                        enable: true
 					}
 				};
 				
 				$.ajax({
-					url : '../../data/menu.json',
+                    url: '../../menu_list.action',
 					type : 'POST',
 					dataType : 'text',
 					success : function(data) {
