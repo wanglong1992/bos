@@ -4,7 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
     <!-- 配置shiro的注解 -->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
-          depends-on="lifecycleBeanPostProcessor"></bean>
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"></property>
+    </bean>
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"></property>
     </bean>
@@ -12,6 +14,7 @@
     <!-- 配置安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="bosRealm"></property>
+        <property name="cacheManager" ref="shiroCacheManager"/>
     </bean>
     <!-- 对安全管理器 增强代码 ， spring 后处理器 -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
@@ -44,4 +47,10 @@
         </property>
 
     </bean>
+
+    <!-- 创建Realm -->
+    <bean id="bosRealm" class="cn.itcast.realm.BosRealm">
+        <property name="authorizationCacheName" value="bos"></property>
+    </bean>
+
 </beans>
