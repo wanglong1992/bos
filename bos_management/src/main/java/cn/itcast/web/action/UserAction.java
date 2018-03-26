@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @ParentPackage(value = "json-default")
 @Namespace("/")
 @Controller
@@ -54,4 +56,13 @@ public class UserAction extends BaseAction<User> {
         subject.logout();
         return SUCCESS;
     }
+
+    @Action(value = "user_list", results = {@Result(type = "json")})
+    public String userList() {
+        List<User> users = userService.findAll();
+        pushValueStackToPage(users);
+        return SUCCESS;
+    }
+
+
 }
