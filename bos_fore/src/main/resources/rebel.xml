@@ -9,13 +9,13 @@
              xsi:schemaLocation="http://www.zeroturnaround.com http://update.zeroturnaround.com/jrebel/rebel-2_1.xsd">
 
     <classpath>
-        <dir name="D:/myEclipse/bos/bos/bos_fore/target/classes">
+        <dir name="G:/git/bos/bos_fore/target/classes">
         </dir>
     </classpath>
 
     <web>
         <link target="/">
-            <dir name="D:/myEclipse/bos/bos/bos_fore/src/main/webapp">
+            <dir name="G:/git/bos/bos_fore/src/main/webapp">
             </dir>
         </link>
     </web>
