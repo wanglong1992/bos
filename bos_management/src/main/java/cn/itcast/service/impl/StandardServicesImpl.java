@@ -1,16 +1,17 @@
 package cn.itcast.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
-
+import cn.itcast.dao.StandardRepository;
+import cn.itcast.domain.base.Standard;
+import cn.itcast.service.StandardServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import cn.itcast.dao.StandardRepository;
-import cn.itcast.domain.base.Standard;
-import cn.itcast.service.StandardServices;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class StandardServicesImpl implements StandardServices {
@@ -18,6 +19,7 @@ public class StandardServicesImpl implements StandardServices {
 	private StandardRepository standardRepository;
 
 	@Override
+	@CacheEvict(value = "standard", allEntries = true)
 	public void saveStandard(Standard standard) {
 		standardRepository.save(standard);
 	}
@@ -29,6 +31,7 @@ public class StandardServicesImpl implements StandardServices {
 	}
 
 	@Override
+	@Cacheable(value = "standard", key = "#pageable.pageNumber+'_'+#pageable.pageSize")
 	public Page<Standard> findPageQuery(Pageable pageable) {
 		return standardRepository.findAll(pageable);
 	}

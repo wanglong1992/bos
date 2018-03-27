@@ -10,16 +10,16 @@
 		http://www.springframework.org/schema/cache/spring-cache.xsd">
 
     <!-- 添加缓存管理工厂，加载ehcache.xml -->
-    <bean id="EhCacheManagerFactoryBean" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    <bean id="EhCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
         <property name="configLocation" value="classpath:ehcache.xml"></property> <!-- 从ehcache.xml中读取缓存的配置 -->
     </bean>
     <!-- shiro封装cacheManager 配置shiro封装缓存管理器 -->
     <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManager" ref="EhCacheManagerFactoryBean"></property>
+        <property name="cacheManager" ref="EhCacheManager"></property>
     </bean>
     <!-- spring封装ehcache缓存管理器 -->
     <bean id="springCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager" ref="EhCacheManagerFactoryBean"></property>
+        <property name="cacheManager" ref="EhCacheManager"></property>
     </bean>
     <cache:annotation-driven cache-manager="springCacheManager"/>
 
