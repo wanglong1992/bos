@@ -21,7 +21,7 @@
     Subdirectories can be specified below the property e.g. java.io.tmpdir/one
 
     -->
-    <diskStore path="D:\\temp"/>
+    <diskStore path="G:\\temp"/>
 
     <!--
     Specifies a CacheManagerEventListenerFactory, be used to create a CacheManagerPeerProvider,
