@@ -72,9 +72,8 @@ public class WayBillAction extends BaseAction<WayBill> {
             map.put("success", false);
         } else {
             map.put("success", true);
-            //map.put()
+            map.put("wayBillData", wayBill);
         }
-
         return SUCCESS;
     }
 }

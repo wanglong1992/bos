@@ -23,7 +23,6 @@ public class AreaServiceImpl implements cn.itcast.service.AreaService {
     @Override
     public Page<Area> findPageQuery(Specification<Area> specification, PageRequest pageable) {
         return areaRepository.findAll(specification, pageable);
-
     }
 
 }
