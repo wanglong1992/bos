@@ -63,8 +63,18 @@ public class WayBillAction extends BaseAction<WayBill> {
     }
 
     @Action(value = "load_waybill_by_ordernum", results = {@Result(name = "success", type = "json")})
-    public  String  getWaybillByOrderNum(){
-        System.out.println(model.getOrder().getOrderNum());
-        return  SUCCESS;
+    public String getWaybillByOrderNum() {
+        // System.out.println(model.getOrder().getOrderNum());
+
+        Map<String, Object> map = new HashMap<>();
+        WayBill wayBill = wayBillService.findByWayBillNum(model.getWayBillNum());
+        if (wayBill == null) {
+            map.put("success", false);
+        } else {
+            map.put("success", true);
+            //map.put()
+        }
+
+        return SUCCESS;
     }
 }

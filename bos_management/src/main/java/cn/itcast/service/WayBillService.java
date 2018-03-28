@@ -9,4 +9,5 @@ public interface WayBillService {
 
     Page<WayBill> pageQuery(Pageable pageable, WayBill wayBill);
 
+    WayBill findByWayBillNum(String wayBillNum);
 }

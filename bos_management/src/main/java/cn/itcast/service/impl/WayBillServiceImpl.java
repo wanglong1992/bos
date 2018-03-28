@@ -26,4 +26,9 @@ public class WayBillServiceImpl implements WayBillService {
 
         return wayBillRepository.findAll(pageable);
     }
+
+    @Override
+    public WayBill findByWayBillNum(String wayBillNum) {
+        return wayBillRepository.findOne(Integer.valueOf(wayBillNum));
+    }
 }
