@@ -73,7 +73,7 @@
 	</bean>
 
 	<!-- 注解管理事务，在Service的类上面定义@Transactional -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
 	<!-- 事务的通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
