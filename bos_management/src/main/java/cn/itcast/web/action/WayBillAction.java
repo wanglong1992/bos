@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 
 import java.util.Date;
@@ -29,6 +30,7 @@ public class WayBillAction extends BaseAction<WayBill> {
     private static final Logger LOGGER = LoggerFactory.getLogger(WayBillAction.class);
     @Autowired
     private WayBillService wayBillService;
+
     @Action(value = "waybill_save", results = {@Result(name = "success", type = "json")})
     public String save() {
         Map<String, Object> map = new HashMap<>();
@@ -40,27 +42,38 @@ public class WayBillAction extends BaseAction<WayBill> {
             wayBillService.save(model);
             map.put("success", true);
             map.put("msg", "保存运单成功,运单号是" + model.getWayBillNum());
-            LOGGER.info("保存运单成功，运单号是："+model.getWayBillNum()+new Date());
+            LOGGER.info("保存运单成功，运单号是：" + model.getWayBillNum() + new Date());
         } catch (Exception e) {
             e.printStackTrace();
             map.put("success", false);
             map.put("msg", "保存运单失败,运单号是" + model.getWayBillNum() + new Date());
-            LOGGER.error("保存运单失败，运单号是："+model.getWayBillNum()+new Date());
+            LOGGER.error("保存运单失败，运单号是：" + model.getWayBillNum() + new Date());
         }
 
         pushValueStackToPage(map);
         return SUCCESS;
     }
-    @Action(value = "waybill_page",results = {@Result(name = "success",type = "json")})
-    public  String  pageQuery(){
-        Pageable pageable = new PageRequest(page - 1, rows);
-       Page<WayBill> page= wayBillService.pageQuery(pageable);
-       pushValueStackToPage(page);
-        return  SUCCESS;
+
+    @Action(value = "waybill_page", results = {@Result(name = "success", type = "json")})
+    public String pageQuery() {
+        Pageable pageable = new PageRequest(page - 1, rows, new Sort(Sort.Direction.ASC, "id"));
+        Page<WayBill> page = wayBillService.pageQuery(pageable, model);
+        pushValueStackToPage(page);
+        return SUCCESS;
     }
-   /* @Action(value = "load_waybill_by_ordernum",results = {@Result(name = "success",type = "json")})
-    public  String  getWaybillByOrderNum(){
-        System.out.println(model.getOrder().getOrderNum());
-        return  SUCCESS;
-    }*/
+
+    @Action(value = "load_waybill_by_ordernum", results = {@Result(name = "success", type = "json")})
+    public String getWaybillByOrderNum() {
+        // System.out.println(model.getOrder().getOrderNum());
+
+        Map<String, Object> map = new HashMap<>();
+        WayBill wayBill = wayBillService.findByWayBillNum(model.getWayBillNum());
+        if (wayBill == null) {
+            map.put("success", false);
+        } else {
+            map.put("success", true);
+            map.put("wayBillData", wayBill);
+        }
+        return SUCCESS;
+    }
 }
