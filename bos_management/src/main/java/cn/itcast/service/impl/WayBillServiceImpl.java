@@ -22,6 +22,21 @@ public class WayBillServiceImpl implements WayBillService {
 
     @Override
     public void save(WayBill wayBill) {
+        if (wayBill != null && wayBill.getId() != null) {
+            WayBill persistWayBill = wayBillRepository.findOne(wayBill.getId());
+            if (persistWayBill.getSignStatus() != 1) {
+                System.out.println("运单已开始配送,无法保存");
+                throw new RuntimeException("运单已开始配送,无法保存");
+
+
+            }
+        }
+        /*
+         * 运单状态： 1 待发货、 2 派送中、3 已签收、4 异常
+         */
+        wayBill.setSignStatus(1);
+        wayBillIndexRepository.save(wayBill);
+
         wayBillRepository.save(wayBill);
     }
 
