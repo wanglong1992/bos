@@ -9,6 +9,10 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 
 import java.util.HashMap;
@@ -45,6 +49,14 @@ public class TransitInfoAction extends BaseAction<TransitInfo> {
         }
 
         pushValueStackToPage(map);
+        return SUCCESS;
+    }
+
+    @Action(value = "transit_pageQuery", results = {@Result(type = "json")})
+    public String pageQuery() {
+        Pageable pageRequest = new PageRequest(page - 1, rows, new Sort(Sort.Direction.ASC, "id"));
+        Page<TransitInfo> transitInfos = transitInfoService.findPageQuery(pageRequest);
+        pushValueStackToPage(transitInfos);
         return SUCCESS;
     }
 

@@ -8,10 +8,14 @@ import cn.itcast.index.WayBillIndexRepository;
 import cn.itcast.service.TransitInfoService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TransitInfoServiceImpl implements TransitInfoService {
+
+
     @Autowired
     private TransitInfoRepository transitInfoRepository;
     @Autowired
@@ -36,5 +40,10 @@ public class TransitInfoServiceImpl implements TransitInfoService {
                 }
             }
         }
+    }
+
+    @Override
+    public Page<TransitInfo> findPageQuery(Pageable pageRequest) {
+        return transitInfoRepository.findAll(pageRequest);
     }
 }
