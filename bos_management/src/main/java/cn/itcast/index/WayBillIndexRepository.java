@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface WayBillIndexRepository extends ElasticsearchRepository<WayBill, Integer> {
 
-    public List<WayBill> findByWayBillNum(String wayBillNum);
+    List<WayBill> findByWayBillNum(String wayBillNum);
 }
