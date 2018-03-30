@@ -98,4 +98,24 @@ public class TransitInfo {
         this.outletAddress = outletAddress;
     }
 
+    @Transient
+    public String getTransferInfo() {
+        StringBuilder sb = new StringBuilder();
+        // 添加出入库信息
+        if (inOutStorageInfos != null && inOutStorageInfos.size() > 0) {
+            for (InOutStorageInfo inOutStorageInfo : inOutStorageInfos) {
+                sb.append(inOutStorageInfo + "<br>");
+            }
+        }
+        // 添加配送信息
+        if (deliveryInfo != null) {
+            sb.append(deliveryInfo.getDescription() + "<br>");
+        }
+        // 添加签收信息
+        if (signInfo != null) {
+            sb.append(signInfo.getDescription() + "<br>");
+        }
+        return sb.toString();
+    }
+
 }

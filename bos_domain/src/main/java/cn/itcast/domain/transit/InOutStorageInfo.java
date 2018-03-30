@@ -17,7 +17,7 @@ public class InOutStorageInfo {
     private String operation; // 操作类型 ： 入库、出库、到达网点
 
     @Column(name = "C_ADDRESS")
-    private String Address; // 仓库、网点 地址
+    private String address; // 仓库、网点 地址
 
     @Column(name = "C_DESCRIPTION")
     private String description; // 描述
@@ -39,11 +39,11 @@ public class InOutStorageInfo {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getDescription() {

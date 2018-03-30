@@ -33,6 +33,34 @@
                 text: '出入库',
                 iconCls: 'icon-add',
                 handler: function () {
+                    var row = $("#transitGrid").datagrid('getSelected');
+                    // 判断是否选中一条记录
+                    if (row == null) {
+                        // 没有选中运输记录
+                        $.messager.alert('警告', '必须要先选中一条记录', 'warning');
+                        return;
+                    }
+
+                    // 判断运输状态是否为“出入库”
+                    if (row.status == '出入库中转') {
+                        // 在表单隐藏域保存当前操作中转信息
+                        $("#inOutStoreId").val(row.id);
+                        // 回显运输配送信息
+                        var inOutStoreTransitInfoView = $("#inOutStoreTransitInfoView");
+                        inOutStoreTransitInfoView.text("");//清空数据
+                        inOutStoreTransitInfoView.append("运单号：" + row.wayBill.wayBillNum + "</br>");
+                        inOutStoreTransitInfoView.append("货物类型：" + row.wayBill.goodsType + "</br>");
+                        inOutStoreTransitInfoView.append("发货地：" + row.wayBill.sendAddress + "</br>");
+                        inOutStoreTransitInfoView.append("收货地：" + row.wayBill.recAddress + "</br>");
+                        // transferInfo属性在实体中不存在，需要手动进行设置。
+                        inOutStoreTransitInfoView.append("物流信息：" + row.transferInfo + "</br>");
+                    } else {
+                        // 状态不为出入库中转，不必进行出入库操作
+                        $.messager.alert('警告', '进行出入库操作，必须操作状态为出入库中转的运单', 'warning');
+                        return;
+                    }
+
+
                     $("#inoutstoreWindow").window('open');
                 }
             }, {
@@ -281,7 +309,7 @@
         </div>
     </div>
     <div region="center" style="overflow:auto;padding:5px;" border="false">
-        <form id="inoutStoreForm" method="post" action="">
+        <form id="inoutStoreForm" method="post" action="../../inoutstore_save.action">
             <table class="table-edit" width="80%" align="center">
                 <tr class="title">
                     <td colspan="2">入库操作</td>
