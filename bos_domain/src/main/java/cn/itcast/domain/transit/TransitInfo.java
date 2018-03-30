@@ -104,7 +104,7 @@ public class TransitInfo {
         // 添加出入库信息
         if (inOutStorageInfos != null && inOutStorageInfos.size() > 0) {
             for (InOutStorageInfo inOutStorageInfo : inOutStorageInfos) {
-                sb.append(inOutStorageInfo + "<br>");
+                sb.append(inOutStorageInfo.getDescription() + "<br>");
             }
         }
         // 添加配送信息
@@ -115,6 +115,7 @@ public class TransitInfo {
         if (signInfo != null) {
             sb.append(signInfo.getDescription() + "<br>");
         }
+        System.out.println(sb.toString());
         return sb.toString();
     }
 

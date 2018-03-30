@@ -59,6 +59,4 @@ public class TransitInfoAction extends BaseAction<TransitInfo> {
         pushValueStackToPage(transitInfos);
         return SUCCESS;
     }
-
-
 }
