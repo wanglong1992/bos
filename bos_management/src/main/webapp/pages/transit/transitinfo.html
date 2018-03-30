@@ -172,6 +172,17 @@
                 text: '查看配送信息',
                 iconCls: 'icon-search',
                 handler: function () {
+                    var row = $("#transitGrid").datagrid("getSelected");
+
+                    // 查看物流配送的信息
+                    $("#transitInfoView").text("");// 清空span标签里面的内容
+                    $("#transitInfoView").append("运单号：" + row.wayBill.wayBillNum + "<br/>");
+                    $("#transitInfoView").append("货物类型：" + row.wayBill.goodsType + "<br/>");
+                    $("#transitInfoView").append("寄件地址：" + row.wayBill.sendAddress + "<br/>");
+                    $("#transitInfoView").append("收件地址：" + row.wayBill.recAddress + "<br/>");
+                    // transferInfo属性在实体中不存在，需要手动进行设置。
+                    $("#transitInfoView").append("物流信息：" + row.transferInfo + "</br>");
+
                     $("#deliveryInTimePathWindow").window('open');
                 }
             }];
